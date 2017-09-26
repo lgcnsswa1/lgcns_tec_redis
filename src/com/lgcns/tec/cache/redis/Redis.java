@@ -31,8 +31,22 @@ public class Redis {
     	// get bind config from conf file
     	if (redisConf == null) redisConf = new JedisPoolConfig();
     	
-    	if ( jedisPool == null ) jedisPool = new JedisPool(redisConf, host, port);
+    	if ( jedisPool == null ) jedisPool = new JedisPool(redisConf, host, port );
     	System.out.println( "Jedis Pool Hash Code : " + jedisPool.hashCode() );
+    }
+    
+    public static void releasePool()
+    {
+    	if( jedisPool != null ) try { jedisPool.close(); } catch (Exception e) {}
+    	jedisPool = null;
+    }
+    
+    
+    public static Jedis getInstance( String host, int port  )
+    {
+	    if( jedisPool == null ) createPool( host, port ); // jedisPool = new JedisPool(new JedisPoolConfig(), "localhost");
+		   
+	    return jedisPool.getResource();    	
     }
     
     public static Jedis getInstance()
@@ -93,4 +107,6 @@ public class Redis {
     {
     	if( sentinelPool != null ) try { sentinelPool.close(); } catch (Exception e) {}
     }
+    
+    
 }

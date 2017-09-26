@@ -29,7 +29,7 @@ public class MonitorUtil {
 
 		    String stat = jedisInst.info();
 		    
-		    System.out.println(stat);
+		    //System.out.println(stat);
 		    
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -37,15 +37,34 @@ public class MonitorUtil {
 			jedisInst.close();
 		} 
     }
-    public static void getInfoBySection(String section)
+    
+    public static String getInfoBySection(Jedis jedisInst, String section)
+    {
+    	String stat = null;
+    	
+    	try {
+	    	stat = jedisInst.info(section);
+		    
+		    //System.out.println(stat);
+		    
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  
+    	
+    	return stat;
+    }
+    
+    public static String getInfoBySection(String section)
     {
     	Jedis jedisInst = null;
+    	String stat = null;
+    	
     	try {
 	    	jedisInst = Redis.getInstance();
 
-		    String stat = jedisInst.info(section);
+		    stat = jedisInst.info(section);
 		    
-		    System.out.println(stat);
+		    //System.out.println(stat);
 		    
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,15 +72,38 @@ public class MonitorUtil {
 			jedisInst.close();
 		} 
     	
+    	return stat;
     }
-    public static void getInfoByParam(String param)
+    
+    
+    public static String getInfoByParam(Jedis jedisInst, String param)
+    {
+    	String value[] = null;
+    	
+    	try {
+		    String stat[] = jedisInst.info().split(param);
+		    value = stat[1].split(":");
+		    value = value[1].split("\n");
+		    
+		    System.out.println(value[0]);
+		    
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+    	
+    	return value[0];
+    }
+    
+    public static String getInfoByParam(String param)
     {
     	Jedis jedisInst = null;
+    	String value[] = null;
+    	
     	try {
 	    	jedisInst = Redis.getInstance();
 
 		    String stat[] = jedisInst.info().split(param);
-		    String value[] = stat[1].split(":");
+		    value = stat[1].split(":");
 		    value = value[1].split("\n");
 		    
 		    System.out.println(value[0]);
@@ -72,6 +114,7 @@ public class MonitorUtil {
 			jedisInst.close();
 		} 
     	
+    	return value[0];
     }
     
     public static void shutdownRedis()
