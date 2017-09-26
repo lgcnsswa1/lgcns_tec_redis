@@ -2,15 +2,14 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jedis-master"/>
 	<classpathentry kind="lib" path="D:/Java/ext_lib/commons-pool2-2.4.2.jar"/>
-	<classpathentry kind="lib" path="D:/Java/ext_lib/slf4j-api-1.7.25.jar"/>
 	<classpathentry kind="lib" path="D:/Java/ext_lib/commons-configuration2-2.1.1.jar"/>
 	<classpathentry kind="lib" path="D:/Java/ext_lib/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="D:/Java/ext_lib/commons-beanutils-1.9.3.jar"/>
-	<classpathentry kind="lib" path="D:/Java/ext_lib/commons-lang3-3.6.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/kryo-master"/>
-	<classpathentry kind="lib" path="D:/Java/ext_lib/guava-23.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="D:/Java/ext_lib/jedis-2.9.0.jar"/>
+	<classpathentry kind="lib" path="D:/Java/ext_lib/kryo-4.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/Java/ext_lib/guava-23.0.jar"/>
+	<classpathentry kind="lib" path="D:/Java/ext_lib/commons-lang3-3.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
